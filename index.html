@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DailySEONest — SEO, Tended Daily</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6F1E4;
+    --paper:#FBF8EF;
+    --ink:#1F3A34;
+    --ink-soft:#33564D;
+    --rust:#C4772F;
+    --rust-deep:#A15E22;
+    --olive:#8A8158;
+    --line:#DFD6BC;
+    --serif:'Spectral', serif;
+    --sans:'Karla', sans-serif;
+    --mono:'Courier Prime', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.65;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 32px;}
+
+  .datebar{background:var(--ink); color:var(--cream); text-align:center; font-family:var(--mono); font-size:0.76rem; letter-spacing:0.04em; padding:8px 0;}
+
+  header{border-bottom:1px solid var(--line); background:var(--paper); position:sticky; top:0; z-index:10;}
+  nav{display:flex; justify-content:space-between; align-items:center; padding:24px 0;}
+  .logo{font-family:var(--serif); font-weight:600; font-size:1.4rem; color:var(--ink);}
+  .logo em{font-style:italic; color:var(--rust);}
+  .navlinks{display:flex; gap:32px; font-size:0.9rem; color:var(--ink-soft); font-weight:500;}
+  .navlinks a:hover{color:var(--ink);}
+  .btn-primary{background:var(--ink); color:var(--cream); padding:11px 22px; border-radius:3px; font-size:0.85rem; font-weight:700;}
+
+  .hero{padding:80px 0 40px; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;}
+  .eyebrow{font-family:var(--mono); font-size:0.78rem; color:var(--rust); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:22px; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:'🪶'; font-size:0.9rem;}
+  h1{font-family:var(--serif); font-weight:600; font-size:clamp(2.4rem,4.4vw,3.5rem); line-height:1.14; margin-bottom:24px; color:var(--ink);}
+  h1 em{font-style:italic; color:var(--rust);}
+  .hero p{font-size:1.05rem; color:var(--ink-soft); max-width:460px; margin-bottom:34px;}
+  .hero-ctas{display:flex; gap:16px; align-items:center;}
+  .btn-lg{background:var(--rust); color:#fff; padding:15px 30px; border-radius:3px; font-weight:700; font-size:0.92rem;}
+  .btn-lg:hover{background:var(--rust-deep);}
+  .link-arrow{font-size:0.88rem; border-bottom:1px solid var(--rust); padding-bottom:2px; color:var(--ink-soft);}
+
+  .nest-art{display:flex; align-items:center; justify-content:center;}
+  .nest-art svg{width:100%; max-width:400px; height:auto;}
+
+  .digest-band{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--cream);}
+  .digest-inner{display:flex; align-items:center; gap:24px; padding:20px 0; overflow-x:auto; font-family:var(--mono); font-size:0.8rem;}
+  .digest-inner .dchip{white-space:nowrap; padding:7px 14px; border:1px solid var(--line); border-radius:100px; color:var(--ink-soft); background:var(--paper);}
+
+  .section{padding:96px 0;}
+  .section-head{max-width:600px; margin-bottom:56px;}
+  .section-head .tag{font-family:var(--mono); color:var(--rust); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px; display:block;}
+  .section-head h2{font-family:var(--serif); font-weight:600; font-size:clamp(1.85rem,3.2vw,2.5rem); line-height:1.2; color:var(--ink);}
+
+  .eggs{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .egg-card{background:var(--cream); border:1px solid var(--line); border-radius:16px; padding:30px; text-align:left;}
+  .egg-card .glyph{width:44px; height:52px; margin-bottom:20px;}
+  .egg-card h3{font-family:var(--serif); font-weight:600; font-size:1.15rem; margin-bottom:10px;}
+  .egg-card p{color:var(--ink-soft); font-size:0.9rem;}
+
+  .routine{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:0; border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .routine-item{padding:28px 26px; border-right:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .routine-item:nth-child(4n){border-right:none;}
+  .routine-item .time{font-family:var(--mono); font-size:0.75rem; color:var(--rust); margin-bottom:10px;}
+  .routine-item h4{font-family:var(--serif); font-weight:600; font-size:1.02rem; margin-bottom:8px;}
+  .routine-item p{color:var(--ink-soft); font-size:0.86rem;}
+
+  .quote-block{background:var(--ink); color:var(--cream); border-radius:20px; padding:64px 56px; margin:0 32px;}
+  .quote-block .wrap{padding:0; max-width:none;}
+  .quote-block blockquote{font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(1.4rem,2.6vw,1.9rem); max-width:760px; line-height:1.5;}
+  .quote-block cite{display:block; margin-top:22px; font-style:normal; font-family:var(--mono); font-size:0.78rem; opacity:0.75;}
+
+  .newsletter{background:var(--cream); border-radius:20px; padding:60px; text-align:center;}
+  .newsletter h2{font-family:var(--serif); font-weight:600; font-size:clamp(1.8rem,3.4vw,2.4rem); margin-bottom:16px;}
+  .newsletter p{color:var(--ink-soft); max-width:440px; margin:0 auto 28px;}
+  .nl-form{display:flex; gap:10px; max-width:420px; margin:0 auto;}
+  .nl-form input{flex:1; padding:14px 18px; border:1px solid var(--line); border-radius:3px; font-family:var(--sans); font-size:0.92rem; background:#fff;}
+  .nl-form button{border:none; cursor:pointer;}
+
+  footer{padding:44px 0; display:flex; justify-content:space-between; font-size:0.85rem; color:var(--ink-soft); border-top:1px solid var(--line); margin-top:60px;}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .navlinks{display:none;}
+    .eggs{grid-template-columns:1fr;}
+    .routine-item:nth-child(4n){border-right:1px solid var(--line);}
+    .routine-item:nth-child(odd){border-right:1px solid var(--line);}
+    .quote-block{margin:0 16px; padding:44px 28px;}
+    .newsletter{padding:40px 24px;}
+    .nl-form{flex-direction:column;}
+    footer{flex-direction:column; gap:12px; text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="datebar">TODAY'S DIGEST · THURSDAY, AUGUST 20 · 3 RANKING SIGNALS TRACKED</div>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#">DailySEO<em>Nest</em></a>
+      <div class="navlinks">
+        <a href="#care">What We Tend</a>
+        <a href="#routine">Daily Routine</a>
+        <a href="#contact">Join</a>
+      </div>
+      <a class="btn-primary" href="#contact">Start Your Nest</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div>
+      <span class="eyebrow">SEO, Tended Every Single Day</span>
+      <h1>Rankings don't grow from <em>one big push</em>. They grow from daily care.</h1>
+      <p>DailySEONest handles the small, unglamorous SEO work — the fixes, the checks, the updates — every single day, so nothing sits and quietly costs you rankings.</p>
+      <div class="hero-ctas">
+        <a class="btn-lg" href="#contact">Start your nest</a>
+        <a class="link-arrow" href="#care">See what we tend →</a>
+      </div>
+    </div>
+    <div class="nest-art">
+      <svg viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#8A8158" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.75">
+          <path d="M40 230 Q 90 260 170 258 Q 250 260 300 230"/>
+          <path d="M55 245 Q 100 272 170 270 Q 240 272 285 245"/>
+          <path d="M70 210 Q 120 190 170 190 Q 220 190 270 210"/>
+          <path d="M30 215 Q 80 195 170 195 Q 260 195 310 215"/>
+        </g>
+        <ellipse cx="140" cy="210" rx="26" ry="34" fill="#FBF8EF" stroke="#1F3A34" stroke-width="2"/>
+        <ellipse cx="185" cy="222" rx="24" ry="31" fill="#F6F1E4" stroke="#1F3A34" stroke-width="2"/>
+        <ellipse cx="160" cy="185" rx="22" ry="29" fill="#C4772F" opacity="0.9"/>
+        <path d="M160 156 L166 172 L152 172 Z" fill="#C4772F"/>
+        <path d="M158 158 l8 -18 M162 158 l4 -20 M166 160 l10 -14" stroke="#1F3A34" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <text x="60" y="300" font-family="Courier Prime" font-size="12" fill="#8A8158">DAY 1 → RANKING HATCHES</text>
+      </svg>
+    </div>
+  </section>
+
+  <div class="digest-band">
+    <div class="wrap digest-inner">
+      <span class="dchip">✓ Crawl health checked</span>
+      <span class="dchip">✓ New content published</span>
+      <span class="dchip">✓ Rank shifts logged</span>
+      <span class="dchip">✓ Backlink alerts reviewed</span>
+      <span class="dchip">✓ Competitor moves tracked</span>
+    </div>
+  </div>
+
+  <section class="section wrap" id="care">
+    <div class="section-head">
+      <span class="tag">What we tend, daily</span>
+      <h2>Three things checked every morning, without exception.</h2>
+    </div>
+    <div class="eggs">
+      <div class="egg-card">
+        <svg class="glyph" viewBox="0 0 44 52"><ellipse cx="22" cy="28" rx="18" ry="22" fill="none" stroke="#C4772F" stroke-width="2.5"/></svg>
+        <h3>Technical Health</h3>
+        <p>Crawl errors, broken links, and speed regressions caught the day they happen, not in a monthly report.</p>
+      </div>
+      <div class="egg-card">
+        <svg class="glyph" viewBox="0 0 44 52"><ellipse cx="22" cy="28" rx="18" ry="22" fill="none" stroke="#C4772F" stroke-width="2.5"/></svg>
+        <h3>Content Freshness</h3>
+        <p>Aging top pages updated on a rolling schedule so they don't quietly slide down the results.</p>
+      </div>
+      <div class="egg-card">
+        <svg class="glyph" viewBox="0 0 44 52"><ellipse cx="22" cy="28" rx="18" ry="22" fill="none" stroke="#C4772F" stroke-width="2.5"/></svg>
+        <h3>Ranking Signals</h3>
+        <p>Daily tracking on your priority terms, with a plain-English note the moment something shifts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="routine">
+    <div class="section-head">
+      <span class="tag">A day in the nest</span>
+      <h2>The same quiet routine, every weekday.</h2>
+    </div>
+    <div class="routine">
+      <div class="routine-item"><div class="time">8:00 AM</div><h4>Health Check</h4><p>Crawl status and uptime reviewed before your day starts.</p></div>
+      <div class="routine-item"><div class="time">10:30 AM</div><h4>Content Pass</h4><p>One page improved or published — every single weekday.</p></div>
+      <div class="routine-item"><div class="time">2:00 PM</div><h4>Rank Log</h4><p>Movement on your tracked terms recorded and explained.</p></div>
+      <div class="routine-item"><div class="time">4:30 PM</div><h4>Daily Note</h4><p>A short, honest update sent to you — no fluff, no filler.</p></div>
+    </div>
+  </section>
+
+  <div class="quote-block">
+    <div class="wrap">
+      <blockquote>"It stopped feeling like a project that starts and stalls. It just... runs, quietly, every day. That's the whole difference."</blockquote>
+      <cite>— Owner, Independent Retail Brand</cite>
+    </div>
+  </div>
+
+  <section class="section wrap" id="contact">
+    <div class="newsletter">
+      <h2>Give your rankings a daily home.</h2>
+      <p>Start your nest and get your first daily digest tomorrow morning.</p>
+      <form class="nl-form" onsubmit="return false;">
+        <input type="email" placeholder="your@email.com" required>
+        <button class="btn-lg">Start My Nest</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>© 2026 DailySEONest</span>
+  <span>dailyseonest.site</span>
+</footer>
+</body>
+</html>
